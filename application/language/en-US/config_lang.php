@@ -242,6 +242,7 @@ $lang["config_sales_invoice_format"] = "Sales Invoice Format";
 $lang["config_sales_quote_format"] = "Sales Quote Format";
 $lang["config_saved_successfully"] = "Configuration save successful.";
 $lang["config_saved_unsuccessfully"] = "Configuration save failed.";
+$lang["config_send_receipt_check_behaviour"] = "Send Receipt checkbox";
 $lang["config_show_office_group"] = "Show office icon";
 $lang["config_statistics"] = "Send Statistics";
 $lang["config_statistics_tooltip"] = "Send statistics for development and feature improvement purposes.";

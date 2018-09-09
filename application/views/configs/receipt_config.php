@@ -51,7 +51,7 @@
 			</div>
 
 			<div class="form-group form-group-sm">
-				<?php echo form_label($this->lang->line('config_email_receipt_check_behaviour'), 'email_receipt_check_behaviour', array('class' => 'control-label col-xs-2')); ?>
+				<?php echo form_label($this->lang->line('config_send_receipt_check_behaviour'), 'email_receipt_check_behaviour', array('class' => 'control-label col-xs-2')); ?>
 				<div class='col-xs-8'>
 					<label class="radio-inline">
 						<?php echo form_radio(array(

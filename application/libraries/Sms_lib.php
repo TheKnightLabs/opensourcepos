@@ -59,6 +59,16 @@ class Sms_lib
 			$fp = fopen($url, 'r');
 			$response = fread($fp, 1024);
 			*/
+			$ch = curl_init();
+			$curlConfig = array(
+				CURLOPT_URL				=> "http://bulksms.mysmsmantra.com:8080/WebSMS/SMSAPI.jsp?username=$username&password=$password&sendername=$originator&mobileno=91$phone&message=$message",
+				CURLOPT_POST 			=> false,
+				CURLOPT_RETURNTRANSFER	=> true
+			);
+			curl_setopt_array($ch, $curlConfig);
+			$out = curl_exec($ch);
+			curl_close($ch);
+			$response = ($out != "DND");
 		}
 
 		return $response;

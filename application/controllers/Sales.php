@@ -15,6 +15,7 @@ class Sales extends Secure_Controller
 		$this->load->library('barcode_lib');
 		$this->load->library('email_lib');
 		$this->load->library('token_lib');
+		$this->load->library('sms_lib');
 	}
 
 	public function index()
@@ -832,6 +833,14 @@ class Sales extends Secure_Controller
 
 			$message = $this->lang->line($result ? 'sales_receipt_sent' : 'sales_receipt_unsent') . ' ' . $to;
 		}
+		
+		if(!empty($sale_data['customer_phone_number']))
+		{
+ 			$to = $sale_data['customer_phone_number'];
+ 			$text = $this->load->view('sales/receipt_sms', $sale_data, TRUE);
+ 			$result = $result || $this->sms_lib->sendSMS($to, $text);
+ 			$message = $this->lang->line($result ? 'sales_receipt_sent' : 'sales_receipt_unsent') . ' ' . $to;
+		}
 
 		echo json_encode(array('success' => $result, 'message' => $message, 'id' => $sale_id));
 
@@ -859,6 +868,7 @@ class Sales extends Secure_Controller
 			$data['first_name'] = $customer_info->first_name;
 			$data['last_name'] = $customer_info->last_name;
 			$data['customer_email'] = $customer_info->email;
+			$data['customer_phone_number'] = $customer_info->phone_number;
 			$data['customer_address'] = $customer_info->address_1;
 			if(!empty($customer_info->zip) || !empty($customer_info->city))
 			{

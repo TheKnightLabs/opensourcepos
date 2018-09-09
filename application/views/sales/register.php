@@ -326,6 +326,17 @@ if(isset($success))
 					}
 					?>
 					<?php
+					if(!empty($customer_phone_number))
+					{
+					?>
+						<tr>
+							<th style='width: 55%;'><?php echo $this->lang->line("sales_customer_phone_number"); ?></th>
+							<th style="width: 45%; text-align: right;"><?php echo $customer_phone_number; ?></th>
+						</tr>
+					<?php
+					}
+					?>
+					<?php
 					if(!empty($customer_address))
 					{
 					?>
@@ -586,13 +597,13 @@ if(isset($success))
 							</div>
 
 							<?php
-							if(!empty($customer_email))
+							if(!empty($customer_email)||!empty($customer_phone_number))
 							{
 							?>
 								<div class="col-xs-6">
 									<label for="email_receipt" class="control-label checkbox">
 										<?php echo form_checkbox(array('name'=>'email_receipt', 'id'=>'email_receipt', 'value'=>1, 'checked'=>$email_receipt)); ?>
-										<?php echo $this->lang->line('sales_email_receipt');?>
+										<?php echo $this->lang->line('sales_send_receipt');?>
 									</label>
 								</div>
 							<?php
